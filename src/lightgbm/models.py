@@ -147,8 +147,10 @@ def train_oof_models(X_train_scaled, y_train_raw, n_classes, strategy, random_st
         del X_tr, y_tr, X_tr_bal, y_tr_bal
         gc.collect()
 
-    print(f"\nRF OOF: {accuracy_score(y_train_raw, np.argmax(oof_rf, axis=1)):.4f}")
-    print(f"LR OOF: {accuracy_score(y_train_raw, np.argmax(oof_lr, axis=1)):.4f}")
+    print(f"\nRF OOF: {accuracy_score(
+        y_train_raw, np.argmax(oof_rf, axis=1)):.4f}")
+    print(f"LR OOF: {accuracy_score(
+        y_train_raw, np.argmax(oof_lr, axis=1)):.4f}")
 
     return oof_rf, oof_lr, rf_models, lr_models
 
@@ -175,7 +177,8 @@ def create_meta_matrix(prob_rf, prob_lr, svd_features):
     m_rf = (s_rf[:, 0] - s_rf[:, 1]).reshape(-1, 1)
     m_lr = (s_lr[:, 0] - s_lr[:, 1]).reshape(-1, 1)
 
-    disagree = (np.argmax(prob_rf, axis=1) != np.argmax(prob_lr, axis=1)).astype(np.float32).reshape(-1, 1)
+    disagree = (np.argmax(prob_rf, axis=1) != np.argmax(
+        prob_lr, axis=1)).astype(np.float32).reshape(-1, 1)
 
     return np.hstack([
         prob_rf,
@@ -238,7 +241,9 @@ def train_meta_model(meta_train, y_train_raw, n_classes, focal_weights, random_s
 
 
 def predict_base_models(rf_models, lr_models, X_test_scaled):
-    rf_test = np.mean([m.predict_proba(X_test_scaled) for m in rf_models], axis=0)
-    lr_test = np.mean([m.predict_proba(X_test_scaled) for m in lr_models], axis=0)
+    rf_test = np.mean([m.predict_proba(X_test_scaled)
+                      for m in rf_models], axis=0)
+    lr_test = np.mean([m.predict_proba(X_test_scaled)
+                      for m in lr_models], axis=0)
 
     return rf_test, lr_test

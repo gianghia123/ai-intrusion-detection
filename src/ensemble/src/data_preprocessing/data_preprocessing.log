@@ -1,0 +1,18 @@
+[1125 ms] INFO - main:285 - Starting Data Preprocessing Pipeline...
+[1442 ms] INFO - audit:47 - Shape: (175341, 45)
+[1447 ms] INFO - audit:48 - Null counts (Should be 0): 0
+[1449 ms] INFO - audit:49 - attack_cat classes: 10
+[1526 ms] INFO - process:71 - Spearman correlation (rate): 0.9068982012442013 -> Drop: False
+[1570 ms] INFO - process:101 - Engineered robust behavioural features, removed protocol dependencies.
+[1600 ms] INFO - select:115 - Low variance (<0.01): ['tcprtt', 'synack', 'ackdat', 'tcp_seq_one_sided', 'win_asymmetry']
+[3109 ms] INFO - select:126 - Highly correlated Spearman pairs (>0.90): 65
+[19458 ms] INFO - select:134 - High VIF (>10): ['spkts', 'dpkts', 'sbytes', 'dbytes', 'sttl', 'dttl', 'sloss', 'dloss', 'sinpkt', 'dinpkt', 'sjit', 'djit', 'swin', 'dwin', 'tcprtt', 'synack', 'ackdat', 'ct_srv_src', 'ct_state_ttl', 'ct_dst_ltm', 'ct_src_dport_ltm', 'ct_dst_sport_ltm', 'ct_dst_src_ltm', 'ct_src_ltm', 'ct_srv_dst', 'bytes_ratio', 'pkts_ratio', 'bytes_per_pkt_src', 'bytes_per_pkt_dst', 'jitter_ratio', 'interpacket_ratio', 'synack_ratio', 'ack_ratio', 'win_asymmetry', 'dst_concentration']
+[172976 ms] INFO - select:178 - Dropping 28 weak/collinear features: ['ackdat', 'bytes_per_pkt_dst', 'bytes_per_pkt_src', 'bytes_ratio', 'ct_dst_ltm', 'ct_dst_sport_ltm', 'ct_dst_src_ltm', 'ct_ftp_cmd', 'ct_src_dport_ltm', 'ct_src_ltm', 'ct_srv_dst', 'ct_srv_src', 'dbytes', 'dloss', 'dpkts', 'dst_concentration', 'dttl', 'dwin', 'is_ftp_login', 'pkts_ratio', 'sbytes', 'sjit', 'sloss', 'swin', 'synack', 'tcp_seq_one_sided', 'tcprtt', 'win_asymmetry']
+[172976 ms] INFO - select:181 - Running RFECV Pass 1 (Stage 1 Binary)...
+[190095 ms] INFO - select:192 - Running RFECV Pass 2 (Stage 2 Multi-class)...
+[374207 ms] INFO - audit:47 - Shape: (82332, 45)
+[374209 ms] INFO - audit:48 - Null counts (Should be 0): 0
+[374211 ms] INFO - audit:49 - attack_cat classes: 10
+[374248 ms] INFO - process:101 - Engineered robust behavioural features, removed protocol dependencies.
+[374304 ms] INFO - main:288 - TRAIN COMPLETED: {'X_train_shape': (175341, 20), 'selected_label_count': 18, 'selected_cat_count': 15, 'union_count': 18}
+[374304 ms] INFO - main:289 - TEST COMPLETED: {'X_test_shape': (82332, 20)}

@@ -1,0 +1,16 @@
+name: dsai
+channels:
+  - conda-forge
+dependencies:
+  - imbalanced-learn
+  - lightgbm
+  - matplotlib
+  - numpy
+  - optuna
+  - pandas
+  - pip
+  - pyarrow
+  - scikit-learn
+  - shap
+  - statsmodels
+  - xgboost
