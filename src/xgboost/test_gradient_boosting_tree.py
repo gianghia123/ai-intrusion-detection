@@ -17,4 +17,4 @@ X_train, y_train, X_val, y_val, sample_weight = data.load_dataset()
 with open("./cat_map.pickle", 'rb') as f:
     cat_map = pickle.load(f)
 
-print(classification_report(y_val.get(), tree.predict(X_val), target_names=cat_map))
+print(classification_report(y_val, tree.predict(X_val), target_names=cat_map))

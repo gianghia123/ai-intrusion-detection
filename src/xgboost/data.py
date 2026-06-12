@@ -24,10 +24,10 @@ def gen_fold_training(fold_index):
     train_set = pd.read_parquet(
         result_path / f"fold_{fold_index}_train.parquet")
     test_set = pd.read_parquet(result_path / f"fold_{fold_index}_test.parquet")
-    X_train_fold = cp.asarray(train_set.drop('attack_cat', axis=1))
-    y_train_fold = cp.asarray(train_set['attack_cat'])
-    X_test_fold = cp.asarray(test_set.drop('attack_cat', axis=1))
-    y_test_fold = cp.asarray(test_set['attack_cat'])
+    X_train_fold = train_set.drop('attack_cat', axis=1)
+    y_train_fold = train_set['attack_cat']
+    X_test_fold = test_set.drop('attack_cat', axis=1)
+    y_test_fold = test_set['attack_cat']
     sample_weight = compute_sample_weight(
         class_weight='balanced', y=y_train_fold.get())
     return X_train_fold, y_train_fold, X_test_fold, y_test_fold, sample_weight
@@ -57,10 +57,6 @@ def load_dataset():
     X_train, y_train = split_x_y("../dataset/train.parquet")
     X_val, y_val = split_x_y("../dataset/test.parquet")
     sample_weight = compute_sample_weight(class_weight='balanced', y=y_train)
-    X_train = cp.asarray(X_train)
-    y_train = cp.asarray(y_train)
-    X_val = cp.asarray(X_val)
-    y_val = cp.asarray(y_val)
     return X_train, y_train, X_val, y_val, sample_weight
 
 
@@ -75,10 +71,6 @@ def dataset_with_smote():
     X_train_oversamp, y_train_oversamp = smotetomek.fit_resample(
         X_train, y_train)
     print(y_train_oversamp.unique())
-    X_train_oversamp = cp.asarray(X_train_oversamp)
-    y_train_oversamp = cp.asarray(y_train_oversamp)
-    X_val = cp.asarray(X_val)
-    y_val = cp.asarray(y_val)
     return X_train_oversamp, y_train_oversamp, X_val, y_val, sample_weight
 
 
