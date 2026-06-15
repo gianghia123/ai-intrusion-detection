@@ -5,7 +5,7 @@ EPOCHS = 50
 TRAIN_RATIO = 0.8
 
 # Data Paths and Output Files
-DATA_DIR = r"C:\Users\DUY\Downloads\CSV"
+DATA_DIR = r"../dataset/csv"
 MODEL_TIER1_PATH = "IDS_Tier1_Binary.keras"
 MODEL_TIER2_PATH = "IDS_Tier2_Multiclass.keras"
 OUTPUT_REPORT_PATH = "Ket_Qua_Du_Doan_IDS.csv"

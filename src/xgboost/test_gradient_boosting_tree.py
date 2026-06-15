@@ -12,7 +12,7 @@ tree = TreeWrapper(**hyperparams)
 
 tree.load_model('gradient_boost_tree.json')
 
-X_train, y_train, X_val, y_val, sample_weight = data.load_dataset()
+X_train, y_train, X_val, y_val, sample_weight = data.dataset_with_smote()
 
 with open("./cat_map.pickle", 'rb') as f:
     cat_map = pickle.load(f)
